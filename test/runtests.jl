@@ -14,3 +14,7 @@ end
     @test res[1] == :SQLCipher_jll
     @test Meta.isexpr(res[2], :., 2)
 end
+
+
+import CompatHelperLocal as CHL
+CHL.@check()
