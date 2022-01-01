@@ -35,7 +35,7 @@ get_func_expr(package::Symbol) = quote
     only(functions)
 end
 
-function build_expr(package::Symbol, binary::Expr; tempdir=false)
+function build_expr(package::Symbol, binary::Expr, arguments::Expr=:(``); tempdir=false)
     quote
         tempdir = mktempdir()
         Pkg.activate(tempdir)
@@ -45,8 +45,11 @@ function build_expr(package::Symbol, binary::Expr; tempdir=false)
         import $package
 
         func = $(binary)
+        arguments = $(arguments)
 
-        run(func())
+        func() do f
+            run(`$f $arguments`)
+        end
     end
 end
 
