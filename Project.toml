@@ -1,0 +1,7 @@
+name = "RunBinary"
+uuid = "29c08b6a-42b0-4a71-84c9-d93be35dae53"
+authors = ["Alexander Plavin <alexander@plav.in>"]
+version = "0.1.0"
+
+[deps]
+Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
